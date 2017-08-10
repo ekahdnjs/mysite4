@@ -112,7 +112,7 @@ public class BoardController {
 			
 			if(authUser.getNo()==boardvo.getUserNo()) {
 				boardservice.delete(boardvo);
-				return "redirect:/board/list";
+				return "redirect:/board/list";    
 			} else {
 				return "redirect:/user/loginform";
 			}
