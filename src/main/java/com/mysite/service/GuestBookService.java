@@ -1,0 +1,22 @@
+package com.mysite.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.mysite.repository.GuestBookDao;
+import com.mysite.vo.GuestBookVo;
+
+
+@Service
+public class GuestBookService {
+
+	
+	@Autowired
+	private GuestBookDao guestbookDao;
+	
+	public int join(GuestBookVo guestbookVo) {
+		
+		return guestbookDao.insert(guestbookVo);
+		
+	}
+	
+}

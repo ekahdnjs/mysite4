@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="guestbook">
+	
+	<resultMap type="com.mysite.vo.GuestBookVo" id="resultMapList">
+		
+		
+		<result column="no" property="no"/>
+ 		<result column="name" property="name"/>
+ 		<result column="password" property="password"/>
+ 		<result column="content" property="content"/>
+		<result column="reg_date" property="date" />
+
+
+	</resultMap>
+	
+	<select id="getList" resultType = "com.mysite.vo.GuestBookVo">
+		
+		<![CDATA[
+	
+					SELECT no, name, password, content, reg_date regDate
+					FROM guestbook 
+					order by no desc
+
+		]]>
+		
+	</select>
+
+
+	<insert id="insert" parameterType="com.mysite.vo.GuestBookVo">
+		
+		<![CDATA[
+			insert into guestbook
+			values (seq_guestbook_no.nextval, 
+			#{name}, 
+			#{password}, 
+			#{content}, 
+			sysdate )
+		]]>
+	
+	</insert>
+	
+	<delete id="delete" parameterType="com.mysite.vo.GuestBookVo">
+		
+		<![CDATA[
+			delete from guestbook where no= #{no} and password= #{password}
+		]]>
+		
+	</delete>
+
+					
+	</mapper>
